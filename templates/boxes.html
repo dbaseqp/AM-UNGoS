@@ -107,6 +107,14 @@
               </div>
             </div>
             {{ end }}
+            <div>
+              <form action="/dashboard/boxes/delete" method="post">
+                    <input class="input" type="hidden" name="ip" value="{{ .IP }}">
+                    <div class="field">
+                        <button class="button is-danger">Delete Box</button>
+                    </div>
+              </form>
+	    </div>
           </div>
           {{ end }}
         </div>

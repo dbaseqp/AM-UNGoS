@@ -375,3 +375,15 @@ func DeleteCredentialPostHandler() gin.HandlerFunc {
 		c.Redirect(http.StatusMovedPermanently, "/dashboard/credentials")
 	}
 }
+
+func DeleteBoxPostHandler() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		ip := c.PostForm("ip")
+
+		if !helpers.DeleteBox(ip) {
+			c.HTML(http.StatusInternalServerError, "boxes.html", gin.H{"error": "Failed to delete box data"})
+			return
+		} 
+		c.Redirect(http.StatusMovedPermanently, "/dashboard/boxes")
+	}
+}

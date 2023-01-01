@@ -29,6 +29,7 @@ func PrivateRoutes(g *gin.RouterGroup) {
 	g.POST("/api/update/credentials", controllers.UpdateCredentialsPostHandler())
 	g.POST("/dashboard/credentials", controllers.CredentialsPostHandler())
 	g.POST("/dashboard/credentials/delete", controllers.DeleteCredentialPostHandler())
+	g.POST("/dashboard/boxes/delete", controllers.DeleteBoxPostHandler())
 	g.POST("/dashboard/boxes/update-codename", controllers.UpdateCodenamePostHandler())
 	g.POST("/dashboard/boxes/update-assignee", controllers.UpdateAssigneePostHandler())
 	g.POST("/dashboard/boxes/update-shells", controllers.UpdateShellsPostHandler())

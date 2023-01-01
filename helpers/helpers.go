@@ -198,6 +198,26 @@ func GetCredentials() ([]DBCredential, error) {
 	return credentials, nil
 }
 
+func DeleteBox (ip string) bool {
+	db, err := sql.Open("sqlite3", "database.db")
+	if err != nil {
+		return false
+	}
+	defer db.Close()
+	stmt, err := db.Prepare("DELETE FROM boxes WHERE ip = ?")
+	if err != nil {
+		return false
+	}
+	defer stmt.Close()
+	_, err = stmt.Exec(ip)
+	
+	if err != nil {
+		return false
+	}
+	defer stmt.Close()
+	return true
+}
+
 func DeleteCredential (id int) bool {
 	db, err := sql.Open("sqlite3", "database.db")
 	if err != nil {
